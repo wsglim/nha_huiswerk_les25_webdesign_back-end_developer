@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<!-- In deze webpagina wordt een eenvoudige agenda gemaakt met jQuery.
+ Nha cursus Webdesign (Back-end Developer), les 25, Wouter Glimmerveen -->
+
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                margin-left: 10%;
+                margin-right: 10%;
+                background-color: snow;
+                font-family: arial;
+            }
+
+            header {
+                background-color: blue;
+                padding: 10px;
+                color: white;
+            }
+            table {
+                width:400px;
+            }
+            input {
+                display: block;
+                padding: 10px;
+                margin: 10px;
+            }
+            .formulier {
+                background-color:lightblue;
+                width: 400px;
+                border: solid thin black;
+                padding: 20px;
+            }
+            button {
+                display: block;
+                padding: 10px;
+                margin: 10px;
+            }
+            #afspraken_ovz {
+                padding: 10px;
+                margin: 10px;                
+            }
+        </style>
+
+    </head>
+    <body>
+        <header>
+        <h1>Welkom op de website!</h1>
+        </header>
+        
+        <h2>Maak een afspraak</h2>
+
+        <div class="formulier">
+            Uw naam
+            <input id="naam" name="naam" type="text" placeholder="Uw naam"> 
+            Datum
+            <input id="datum" name="datum" type="date" placeholder="Datum"> 
+            Tijd vanaf
+            <input id="tijd_van" name="tijd_van" type="time" placeholder="Tijd vanaf"> 
+            Tijd tot
+            <input id="tijd_tot" name="tijd_tot" type="time" placeholder="Tijd tot">             
+            <button id="knop" name="verzenden">Opslaan</button>
+        </div>
+
+        <h2>Agenda</h2>
+        <table id="afspraken_ovz">
+            <tr>
+                <th>Datum</th>
+                <th>Tijd</th>
+                <th>Naam afspraak</th>
+            </tr>
+        </table>
+
+        <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+        
+        <script>
+            $('#knop').click(function() {   // event listener in jQuery
+                var datum = $('#datum').val();
+                var tijd_van = $('#tijd_van').val();
+                var tijd_tot = $('#tijd_tot').val();
+                var tijd = tijd_van+' tot '+tijd_tot
+                var naam = $('#naam').val();
+                $('#afspraken_ovz').append(  // de ingevulde variabelen gaan naar de agenda
+                    '<tr><td>'+datum+'</td><td>'+tijd+'</td><td>'+naam+'</td></tr>'
+                );
+                // maak het formulier leeg:
+                $('#datum').val('');
+                $('#tijd_van').val('');
+                $('#tijd_tot').val('');
+                $('#naam').val('');
+            })
+        </script>
+    </body>
+</html>
